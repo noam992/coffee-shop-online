@@ -1,0 +1,22 @@
+/* General style for Web */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: larger;
+    text-align: center;
+}
+
+/* body */
+body { 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+/* Links */
+a {
+    color: blue;
+}
+
+/* Pipe highlight text from searching cart */
+.highlight-searching-text {
+    background-color: yellow;
+}

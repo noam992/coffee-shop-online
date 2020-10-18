@@ -1,0 +1,101 @@
+<!-- Form -->
+<div class="form-container">
+    <form [formGroup]="this.form" novalidate #formDirective="ngForm" 
+    (ngSubmit)="submitForm(formDirective)">
+
+        <!-- Input product name -->
+        <div class="title-add-product-name">
+            <mat-form-field>
+                
+                <input matInput placeholder="product name.."
+                type="text"
+                formControlName="productName"
+                [(ngModel)]="product.productName">
+                <mat-error>
+                    Missing product name
+                </mat-error>
+                
+            </mat-form-field>
+        </div>
+        <br>
+
+        <!-- Input product's category -->
+
+        <mat-form-field>
+
+            <mat-label>category</mat-label>
+            <mat-select formControlName="productCategoryId"
+                        [(ngModel)]="product.categoryId">
+                <mat-option *ngFor="let category of categories" [value]="category._id">
+                    {{category.category}}
+                </mat-option>
+            </mat-select>
+            <mat-error>
+                Missing category
+            </mat-error>
+
+        </mat-form-field>
+
+
+        <!-- Preview selected image -->
+        <div class="preview-img-file-container">
+            <img [src]="imgUrl" width="200px" height="200px" alt="image-upload" name="fileImg" class="preview-img-file">
+        </div>
+        <br>
+
+        <!-- Input - add image -->
+        <mat-form-field>
+
+            <ngx-mat-file-input 
+                formControlName="productImg"
+                name="productImg"
+                placeholder="Required input"
+                [valuePlaceholder]="fileName"
+                (change)="onFileSelected($event)"
+                [(ngModel)]="selectedFile">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+            <mat-error>
+              Missing file
+            </mat-error>
+
+        </mat-form-field>
+        <br>
+
+        <!-- Input - free text -->
+        <mat-form-field>
+
+            <textarea matInput 
+                    placeholder="Free text.."
+                    type="text"
+                    formControlName="productText"
+                    [(ngModel)]="product.productText">
+            </textarea>
+            <mat-error>
+                Missing text
+            </mat-error>
+
+        </mat-form-field>
+        <br>
+
+        <!-- Input - price -->
+        <mat-form-field>
+
+            <input matInput
+                placeholder="Price.."
+                type="number"
+                formControlName="price"
+                [(ngModel)]="product.price"
+                min="0">
+            <span matPrefix>&#8362;</span>
+            <mat-error>
+                Missing price
+            </mat-error>
+
+        </mat-form-field>
+        <br>
+
+        <button color="primary" mat-raised-button [disabled]="form.invalid" (click)="addProduct()">Submit</button>
+
+    </form>
+</div>

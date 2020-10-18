@@ -1,0 +1,43 @@
+/* Space elements, between two sides of the header */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* logo header */
+.logo-img {
+  height: 75px;
+}
+
+/* Space elements, right side of the header */
+.arrow-icon-header, .arrow-icon-header, .cart-icon-header {
+  margin: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+/* Massage tab in menu */
+.icon-badge-messages, .messages-button{
+  display: inline;
+}
+
+/* Modal */
+.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 12px;
+  border: 1px solid #555;
+}
+
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Home button */
+.home-Btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

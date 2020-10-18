@@ -1,0 +1,27 @@
+<div class="log-in-form">
+    <form #formInfo="ngForm" novalidate (ngSubmit)="login()">
+
+        <mat-form-field>
+            <input matInput type="email" name="email" placeholder="Email.." [(ngModel)]="userEmail"
+                    required pattern="^\w+[\w-\.]*\@([\w-]+\.)+[\w-]+$" #emailInfo="ngModel">
+            <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">Missing email</mat-error>
+            <mat-error *ngIf="emailInfo.errors?.pattern && emailInfo.touched">Invalid email</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+            <input matInput type="password" name="password" placeholder="Password.." [(ngModel)]="user.password"
+                    required #passwordInfo="ngModel">
+            <mat-error *ngIf="passwordInfo.errors?.required && passwordInfo.touched">Missing password</mat-error>
+        </mat-form-field>
+        <br>
+
+        <div class="error-auth-message">
+            <mat-error *ngIf="logInError">Incorrect values</mat-error>
+        </div>
+
+        <button mat-raised-button color="primary" [disabled]="formInfo.form.invalid">log in</button>
+        <br><br>
+
+    </form>
+</div>

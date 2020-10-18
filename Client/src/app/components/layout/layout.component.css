@@ -1,0 +1,38 @@
+/* body container */
+.body-container{
+    height: 100vh;
+}
+
+/* slide bar */
+.sidebar {
+    height: 100%;
+    text-align:center;
+}
+
+
+/* log in container */  
+.app-login-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* log in constant container */
+.app-login-container-content {
+    display: inline-block;
+    height: 100%;
+    max-height: 250px;
+    border: 1px solid rgba(175, 175, 175, 0.767);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+}
+
+/* Close drawer button  */
+.close-log-in-drawer-button-container {
+    position: absolute;
+    top: 10px;
+    right:15px;
+}

@@ -1,0 +1,92 @@
+<!-- Payment -->
+<div class="payment-container-box">
+
+    <!-- Card form -->
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let card of creditCards"
+            (click)="getCardCompany(card.companyCardName)"
+            [active]="cardCompanyActive === card.companyCardName">
+            <img src={{card.imageSrc}} class="logo-img-card">
+        </a>
+        <a mat-tab-link disabled>
+            <img src="/assets/img/cards-logo/paypal-logo.png" class="logo-img-card">
+        </a>
+    </nav>
+
+    <!-- Card form -->                
+    <div class="form-payment-container">
+
+        <form [formGroup]="paymentForm" novalidate
+            #formDirective="ngForm" 
+            (ngSubmit)="submitForm(paymentForm, formDirective)">
+            
+            <!-- Input - card number -->
+            <mat-form-field class="card-number" appearance="outline">
+
+                <mat-label>Card Number</mat-label>
+
+                <input matInput
+                    type="string"
+                    [placeholder]=currentCardType.placeholderCardNumber
+                    formControlName="cardNumber"        
+                    required>
+                <mat-error *ngIf="cardNumber.errors?.required && cardNumber.touched">Missing card number</mat-error>
+                <mat-error *ngIf="cardNumber.errors?.pattern || cardNumber.errors?.isLuhnCheck && cardNumber.touched">Incorrect numbers, no spaces or dashes</mat-error>
+                
+            </mat-form-field>
+            <br>
+
+            <!-- Input - name on card -->
+            <mat-form-field class="name-on-card" appearance="outline">
+
+                <mat-label>Name on card</mat-label>
+
+                <input matInput
+                    type="string"
+                    placeholder="Ex John Happiness"
+                    formControlName="nameOnCard"
+                    required>
+                <mat-error *ngIf="nameOnCard.errors?.required && nameOnCard.touched">Missing name on the card</mat-error>
+                <mat-error *ngIf="nameOnCard.errors?.pattern && nameOnCard.touched">Incorrect full name expression</mat-error>
+                
+            </mat-form-field>
+            <br>
+
+            <div class="expiry-data-security-code-container">
+                <!-- Input - expiry date -->
+                <mat-form-field class="expiry-date" appearance="outline">
+
+                    <mat-label>Expiry Date</mat-label>
+
+                    <input matInput
+                        type="string"
+                        placeholder="09/25"
+                        formControlName="expiryDate"
+                        required>
+                    <mat-error *ngIf="expiryDate.errors?.required && expiryDate.touched">Missing expiry date</mat-error>
+                    <mat-error *ngIf="expiryDate.errors?.pattern && expiryDate.touched">Incorrect expiry date</mat-error>
+
+                </mat-form-field>
+
+                <!-- Input - security code -->
+                <mat-form-field class="security-code" appearance="outline">
+
+                    <mat-label>Security Code</mat-label>
+
+                    <input matInput
+                        type="password"
+                        placeholder="***"
+                        formControlName="securityCode"
+                        required>
+                    <mat-error *ngIf="securityCode.errors?.required && securityCode.touched">Missing security code</mat-error>
+                    <mat-error *ngIf="securityCode.errors?.pattern && securityCode.touched">Security code is three digit</mat-error>
+
+                </mat-form-field>
+            </div>
+            <br>
+            
+        </form>
+        
+    </div>
+
+</div>

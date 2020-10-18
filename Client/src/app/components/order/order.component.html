@@ -1,0 +1,150 @@
+<!-- Order Container -->
+<div class="order-container">
+    
+    <!-- Collapse - contain item from user cart-->
+    <div  class="collapse-list-items-container">
+        
+        <mat-accordion>
+
+            <mat-expansion-panel>
+
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Recept
+                  </mat-panel-title>
+                  <mat-panel-description>
+                      Open to show your order list 	&nbsp;
+                      <span class="material-icons">
+                        list_alt
+                    </span>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="user-items-list-container">
+                    <table mat-table [dataSource]="dataOrderTable">
+
+                        <!-- Product name Column -->
+                        <ng-container matColumnDef="Item">
+                            <th mat-header-cell *matHeaderCellDef> product </th>
+                            <td mat-cell *matCellDef="let element">{{element.product.productName}}</td>
+                            <td mat-footer-cell *matFooterCellDef> Total Order</td>
+                        </ng-container>
+
+                        <!-- Mount Column -->
+                        <ng-container matColumnDef="Amount">
+                            <th mat-header-cell *matHeaderCellDef> amount </th>
+                            <td mat-cell *matCellDef="let element">{{element.amount}}</td>
+                            <td mat-footer-cell *matFooterCellDef></td>
+                        </ng-container>
+
+                        <!-- Price Column -->
+                        <ng-container matColumnDef="Price">
+                            <th mat-header-cell *matHeaderCellDef> price </th>
+                            <td mat-cell *matCellDef="let element">{{element.totalPriceByAmount | currency:'ILS'}}</td>
+                            <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency:"ILS"}} </td>
+                        </ng-container>            
+                    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
+
+              </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+
+    <!-- Delivery & Payment container -->
+    <div class="delivery-and-payment-container">
+
+        <!-- Contain delivery info -->
+        <div class="delivery-container">
+
+            <div class="form-delivery">
+                
+                <!-- Delivery title box -->
+                <h1 class="mat-h2">Delivery detail</h1>
+                <hr>
+
+                <!-- Delivery form box -->
+                <form [formGroup]="this.deliveryForm" novalidate >
+                    
+                    <!-- City input -->
+                    <mat-form-field>
+
+                        <mat-select
+                            placeholder="city"
+                            [(ngModel)]=orderInfo.cityId
+                            formControlName="cityId"
+                            required>
+
+                            <mat-option *ngFor="let city of citiesList" [value]="city._id">
+                                {{city.hebrew_name}}
+                            </mat-option>
+
+                        </mat-select>
+                        <mat-error *ngIf="cityId.errors?.required && cityId.touched">Missing city</mat-error>
+                    
+                    </mat-form-field>
+                    <br>
+                
+                
+                    <!-- Input - address -->
+                    <mat-form-field>
+                    
+                        <input matInput
+                            type="string"
+                            placeholder="Address.."
+                            [(ngModel)]=orderInfo.address
+                            formControlName="deliveryAddress"
+                            required>
+                        <button mat-button type="button" *ngIf="orderInfo.address" matSuffix mat-icon-button aria-label="Clear" (click)="orderInfo.address=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="deliveryAddress.errors?.required && deliveryAddress.touched">Missing address</mat-error>
+
+                    
+                    </mat-form-field>
+                    <br>
+                
+                    <!-- Pick time for delivery -->
+                    <mat-form-field class="full-width">
+                    
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput
+                            [min]="minDate"
+                            [max]="maxDate"
+                            [matDatepicker]="picker"
+                            formControlName="deliveryTime"
+                            required>
+
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="deliveryTime.errors?.required && deliveryTime.touched">Missing delivery date</mat-error>
+
+                    </mat-form-field> 
+                    <br>
+                
+                </form>
+
+            </div>
+
+        </div>
+        <br><br>
+
+        <!-- Payment session -->
+        <div class="payment-component-container">
+            <app-payment (lastFourNumberCardEvent)="lastFourNumberCardHandler($event)" (validityChange)="getStatuesPaymentForm($event)"></app-payment>
+        </div>
+
+    </div>
+
+    <!-- Button Delivery -->
+    <div class="button-form">       
+        <button color="primary" mat-raised-button [disabled]="deliveryForm.invalid || childFormValid" (click)="completeOrder()">Complete Order</button>
+    </div>
+
+</div>

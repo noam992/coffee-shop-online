@@ -1,0 +1,93 @@
+/* Order Container */
+.order-container {
+    background-color: white;
+    height: 100%;
+    min-height: 100vh;
+    margin: auto;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+/* collapse list items container */
+.collapse-list-items-container{
+    margin: auto;
+    min-width: 350px;
+    max-width: 800px;
+}
+
+/* User item list container */
+.user-items-list-container{
+    padding: 20px;
+}
+
+/* Title recept while screen is small size */
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+    margin-right: 0px;
+}
+
+/* Recept table */
+.user-items-list-container table {
+    text-align: left;
+    width: 100%;
+}
+
+/* Recept table last tr */
+table tr.mat-footer-row {
+    height: 75px;
+    font-weight: bold;
+}
+
+/* Delivery & Payment container */
+.delivery-and-payment-container {
+    background-color: white;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Delivery container */
+.delivery-container {
+    display: inline-block;
+    width: 380px;
+    min-width: 340px;
+    border: 1px solid rgba(175, 175, 175, 0.767);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+/* Title & form delivery */
+.form-delivery{
+    min-height: 300px;
+}
+
+/* Form delivery */
+.form-delivery form{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Payment container */
+.payment-component-container {
+    display: inline-block;
+    max-width: 380px;
+    min-width: 340px;
+    border: 1px solid rgba(175, 175, 175, 0.767);
+    border-radius: 5px;
+    padding: 5px;
+    margin: auto;
+    margin-bottom: 5px;
+    min-height: 380px;
+}
+
+/* button form */
+.button-form button{
+    margin: auto;
+    max-width: 390px;
+    width: 100%;
+    min-width: 350px;
+}

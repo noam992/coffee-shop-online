@@ -1,0 +1,156 @@
+<!-- Tool bar - filter-->
+<mat-toolbar-row>
+
+  <!-- Searching input -->
+  <form class="example-form">
+    <mat-form-field>
+      <mat-label>search</mat-label>
+      <input matInput type="search"
+            name="Search"
+            placeholder="Name searching.."
+            [(ngModel)]="searchValue"
+            (keyup)="searchProduct($event.target.value)">
+    </mat-form-field>
+  </form>
+
+  <!-- Filter by category -->
+  <!-- Hamburger filter menu -->
+  <div *ngIf="screenSize === 'deviceXs' || screenSize === 'deviceSm'">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <span class="material-icons">
+        sort
+      </span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div *ngFor="let category of categories">
+        <button mat-flat-button (click)="filterProducts(category.category)">{{category.category}}</button>
+      </div>
+    </mat-menu>
+  </div>
+  <!-- Spread menu -->
+  <div class="filter-spread-container" *ngIf="screenSize === 'deviceMd' || screenSize === 'deviceLg' || screenSize === 'deviceXl'">
+    <div *ngFor="let category of categories">
+      <button mat-menu-item class="btn-category" [style.background-color]="colorBtnCategory === category.category ? 'orange' : null" (click)="filterProducts(category.category)">{{category.category}}</button>
+    </div>
+  </div>
+
+
+</mat-toolbar-row>
+
+<!-- Shopping page -->
+<mat-drawer-container class="online-page-container" autosize>
+
+    <!-- Loading process bar until the products upload -->
+    <div *ngIf='this.isLoadingProcessBar'>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <!-- Drawer container - add new product -->
+    <mat-drawer #drawer class="side-drawer-container" mode="side">
+
+      <div class="drawer-add-product-and-cart-container" [style.width]="screenSize === 'deviceXs' ? '100vw' : null">
+
+        <!-- Close drawer -->
+        <div class="close-cart-and-add-product-drawer-button-container">
+            <button mat-icon-button color="primary" (click)="toggleCartAndAddProductDrawer()">
+                <span class="material-icons">
+                    close
+                </span>
+            </button>
+        </div>
+
+        <div *ngIf="contentDrawer; else cartContent">
+          <app-add-product></app-add-product>
+        </div>
+        <ng-template #cartContent>
+          <div>
+            <app-cart #appCart></app-cart>
+          </div>
+        </ng-template>
+
+      </div>
+
+    </mat-drawer>
+
+    <!-- Add Btn - add new product -->
+    <div class="add-icon-Btn" *ngIf="displayAddProductButton">
+      <button type="button" mat-button (click)="openCartDrawer(true)">
+        <span class="material-icons">
+          add_box
+        </span>
+      </button>
+    </div>
+
+    <!-- Loading process bar until the products upload -->
+    <div *ngIf='this.isSearchingProductsMessageError'>
+      <h1 class="title">No result has been found</h1>
+    </div>
+
+    <!-- Card product -->
+    <div class="card-products-container">
+        <div class="product-card" *ngFor="let product of products">
+            <mat-card>
+
+                <div class="edit-product-btn" *ngIf="displayEditProduct">
+                  <button mat-icon-button (click)="editProduct(product._id)">
+                    <span class="material-icons">
+                      create
+                    </span>
+                  </button>
+                </div>
+
+                <!-- Header of the product -->
+                <mat-card-header class="header-cart">
+
+                    <!-- Product name -->
+                    <mat-card-title>{{product.productName}}</mat-card-title>
+
+                    <!-- Category's product -->
+                    <mat-card-subtitle>{{product.category.category}}</mat-card-subtitle>
+
+                </mat-card-header>
+                
+                <!-- Content on the product -->
+                <mat-card-content >
+                  
+                  <!-- Product image -->
+                  <img mat-card-image src={{product.productImg}} class="img-card" alt="img-card">
+                  
+                  <!-- Free content on the product-->
+                  <p class="content-card">
+                    {{product.productText}}
+                  </p>
+
+                  <!-- Product price -->
+                  <span>{{product.price | currency:'ILS'}}</span>
+
+                </mat-card-content>
+
+                <!-- Active operate of the product -->
+                <mat-card-actions>
+
+                  <div class="active-container" *ngIf="displayAmountOfProduct">
+                    <!-- Mount container -->
+                    <div class="mount-container">
+                      <input matInput placeholder="Mount.."
+                        type="number"
+                        name={{product._id}}
+                        min="1"
+                        max="99"
+                        #inputAmount
+                        value="1">
+                    </div>
+                    
+                    <!--setValue={{product.id}}-->
+                    <!-- Button add to cart -->
+                    <div class="btn-add-to-cart">
+                      <button mat-button *ngIf="displayAddProductButtonToCart" (click)="addProductToCart(inputAmount.name, inputAmount.value)">ADD TO CARD</button>
+                    </div>
+                  </div>
+
+                </mat-card-actions>
+
+            </mat-card>
+        </div>
+    </div>
+</mat-drawer-container>

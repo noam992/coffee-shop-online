@@ -1,0 +1,10 @@
+<!-- Carousel products -->
+<div class="carousel-images-container">
+
+    <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let imgSrc of imagesArray">
+            <img mat-card-image class="image-carousel" src={{imgSrc}} class="img-card" alt="img-card">
+        </ng-template>
+    </owl-carousel-o>
+    
+</div>

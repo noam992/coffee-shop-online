@@ -1,0 +1,10 @@
+{
+    "isProduction": true,
+    "isDevelopment": false,
+    "mongodb": {
+        "connStr": "mongodb://localhost:27017/OnlineShop"
+    },
+    "jwt": {
+        "secretKey": "CoffeeOnlineShop"
+    }
+}

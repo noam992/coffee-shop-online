@@ -1,0 +1,16 @@
+<div class="main-img-home-page-background-container">
+    <div class="main-img-home-page-container">
+        <h1 class="mat-display-2">Coffee Shop Online</h1>
+        <button mat-raised-button color="primary" *ngIf="displaySignInBtn" (click)="moveToLogIn()">Sign In</button>
+        <button mat-raised-button color="primary" *ngIf="displaySignUpBtn" (click)="moveToRegister()">Sign Up</button>
+    </div>
+</div>
+
+<div class="multi-images-carousel">
+    <div class="header-carousel">    
+        <h1 class="subheading-1">Our Products</h1>
+    </div>
+    <hr>
+    <app-multi-item-gallery-component></app-multi-item-gallery-component>
+    <hr>
+</div>

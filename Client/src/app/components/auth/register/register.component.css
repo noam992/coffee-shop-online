@@ -1,0 +1,37 @@
+/* Form first step register container - define height page */
+.form-first-step-register-container {
+    height: calc(100vh - 64px);
+
+}
+
+/* Form first step register container*/
+.form-step-one-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+
+/* Form first step register */
+.form-first-step-register-container form {
+    display: block;
+    max-height: 400px;
+    border: 1px solid rgba(175, 175, 175, 0.767);
+    border-radius: 5px;
+    padding: 30px;
+    margin: 20px;
+}
+
+/* Input form style */
+.mat-form-field-appearance-legacy {
+    margin-top: 10px;
+    max-width: 350px;
+    min-width: 100px;
+}
+
+/* Error container of alert if user exist in our system*/
+.error-is-user-container {
+    display: none;
+    color: red;
+}

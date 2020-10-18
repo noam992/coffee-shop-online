@@ -1,0 +1,26 @@
+// Custom material
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// Defined main color
+$my-theme-primary: mat-palette($mat-brown, A700);
+$my-theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+$my-theme-warn:    mat-palette($mat-red);
+
+// Defined main typography
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, monospace',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+$my-theme: mat-light-theme((
+  color: (
+    primary: $my-theme-primary,
+    accent: $my-theme-accent,
+    warn: $my-theme-warn,  
+  )
+));
+
+@include angular-material-theme($my-theme);

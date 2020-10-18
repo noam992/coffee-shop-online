@@ -1,0 +1,45 @@
+<!-- slide modal for sign in -->
+<mat-sidenav-container>
+
+    <!-- Drawer container -->
+    <mat-sidenav #sidenav class="sidebar" mode="over" opened="false" fixedInViewport>
+        <div class="app-login-container" [style.width]="currentScreenSize === 'xs' ? '100vw' : null">
+            
+            <!-- Close log in drawer -->
+            <div class="close-log-in-drawer-button-container">
+                <button mat-icon-button color="primary" (click)="toggleSideDrawer()">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </button>
+            </div>
+
+            <div class="app-login-container-content">
+                
+                <!-- Log in title -->
+                <h1 class="mat-h2">Log in</h1>
+                <hr>
+
+                <!-- Log in component -->
+                <app-login #appLogIn></app-login>
+
+            </div>
+        </div>
+    </mat-sidenav>
+
+    <!-- Body container -->
+    <mat-sidenav-content class="body-container">
+
+        <!-- Header area -->
+        <header>
+            <app-header (toggleDrawer)="toggleSideDrawer()"></app-header>
+        </header>
+    
+        <!-- main area - changing contact -->
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

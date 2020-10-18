@@ -1,0 +1,35 @@
+/* Main img home page background container */
+.main-img-home-page-background-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    background-image: url("/assets/home-page-img/home-page-img-2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Main img home page container */
+.main-img-home-page-container {
+    display: inline-block;
+}
+
+/* Button main image  */
+.main-img-home-page-container button{
+    margin: 2px;
+    width: 100px;
+}
+
+/* Multi images carousel container */
+.multi-images-carousel{
+    margin-bottom: 30px;
+}
+
+/* Carousel header */
+.header-carousel {
+    margin: 15px;
+    margin-top: 75px;
+    font-weight: bold; 
+}

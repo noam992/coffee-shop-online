@@ -1,0 +1,62 @@
+<div class="form-first-step-register-container">
+
+    <div class="form-step-one-register-container">
+
+        <form [formGroup]="this.userRegistrationForm" novalidate>
+
+            <!-- Register step 1 title -->
+            <h1 class="mat-h2">Register step 1</h1>
+            <hr>
+
+            <mat-form-field>
+                <input matInput placeholder="ID.." type="number" formControlName="identityCard" [(ngModel)]="user.identityCard">
+                <mat-error>
+                    {{errors.identityCard}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field>
+                <input matInput  placeholder="Email.." type="email" formControlName="email" [(ngModel)]="user.email">
+                <mat-error>
+                    {{errors.email}}
+                </mat-error>
+            </mat-form-field>
+            <br>
+
+            <div formGroupName="passwordGroup">
+                <mat-form-field>
+                    <input matInput placeholder="Password.." [type]="hide ? 'password' : 'text'" formControlName="password" [(ngModel)]="user.password">
+                    <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error>
+                        {{errors.password}}
+                    </mat-error>
+                </mat-form-field>
+                <br>
+
+                <mat-form-field>
+                    <input matInput placeholder="Repeat password.." [type]="secondHide ? 'password' : 'text'" formControlName="confirmPassword" [errorStateMatcher]="confirmValidParentMatcher">
+                    <button mat-icon-button matSuffix type="button" (click)="secondHide = !secondHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="secondHide">
+                        <mat-icon>{{secondHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error>
+                        {{errors.confirmPassword}}
+                    </mat-error>
+                </mat-form-field>
+                <br>
+
+                <div ng-class="error-is-user-container" [style]="errorIsUserContainer">
+                    <span class="error-is-user">{{this.isUserError}}</span>
+                </div>
+
+                <button color="primary" mat-raised-button [disabled]="userRegistrationForm.invalid" (click)="moveToNextRegisterStep()">log in</button>
+                <br><br>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

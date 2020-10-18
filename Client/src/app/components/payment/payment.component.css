@@ -1,0 +1,34 @@
+/* Link's card company*/
+.mat-tab-link {
+    min-width: 72px;
+}
+
+/* Image logo for payment option header */
+.logo-img-card {
+    width: 75px;
+}
+
+/* form payment container */
+.form-payment-container {
+    max-width: 300px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+/* Card number and name on card */
+mat-form-field.card-number, mat-form-field.name-on-card {
+    width: 100%;
+    min-width: 240px;
+}
+
+/* Container - expiry date and security code */
+.expiry-data-security-code-container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+/* Expiry date and security code */
+mat-form-field.expiry-date, mat-form-field.security-code {
+    max-width: 120px;
+}

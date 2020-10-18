@@ -1,0 +1,58 @@
+/* Form first step register container - define height page */
+.form-second-step-register-container {
+    height: calc(100vh - 64px);
+
+}
+
+/* Form first step register container*/
+.form-step-two-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+/* Form first step register */
+.form-step-two-register-container form {
+    display: block;
+    max-height: 100%;
+    border: 1px solid rgba(175, 175, 175, 0.767);
+    border-radius: 5px;
+    padding: 30px;
+    margin: 20px;
+}
+
+/* Input select prefix home number */
+.select-area-code {
+    width:40px;
+    max-width:40px;
+    direction: rtl;
+}
+
+/* Input home number */
+.home-phone-error {
+    display: none;
+    margin: 0;
+    color: red;
+}
+
+/* second smart phone input */
+.second-smart-phone {
+    display: none;    
+}
+
+/* third smart phone input */
+.third-smart-phone {
+    display: none;
+}
+
+/* Image modal container */
+.image-modal-container {
+    overflow: hidden;
+    height: 100px;
+}
+
+/* Image modal */
+.image-modal {
+    height: 90px;
+}

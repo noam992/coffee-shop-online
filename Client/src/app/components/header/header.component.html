@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+
+  <!-- Arrow button - menu -->
+  <div class="arrow-icon-header">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="button-arrow-icon">
+      <span class="material-icons">
+        keyboard_arrow_down
+      </span>
+    </button>
+    <mat-menu #menu="matMenu">
+      
+      <!-- Home button -->
+      <button mat-menu-item *ngIf='displayHomeButton' (click)="moveToHomePage()" class="home-Btn">
+        <span>
+          Home
+        </span>
+        <span class="material-icons">
+          home
+        </span>
+      </button>
+      
+      <!-- Sign in button -->
+      <button mat-menu-item *ngIf="displayLogInButton" (click)="openDrawerSignIn()">Sign in</button>
+      
+      <!-- Sign up button -->
+      <button mat-menu-item *ngIf="displaySignUpButton" (click)="moveToRegister()">Sign up</button>
+      
+      <!-- Shopping page button -->
+      <button mat-menu-item *ngIf="displayShoppingPageButton" (click)="moveToShopPage()">Go to shop</button>
+      
+      <!-- Sign out button -->
+      <button mat-menu-item *ngIf="displaySignOutButton" (click)="signOut()">Sign out</button>
+    
+    </mat-menu>
+  </div>
+
+  <!-- User mode guest/client/admin -->
+  <div class="arrow-icon-header">
+    {{userMode}}
+  </div>
+
+  <!-- Cart button -->
+  <div class="cart-icon-header">
+    <button mat-icon-button class="button-cart-icon" [disabled]=disableCartButton (click)="openCartAndMoveToShoppingPage()">
+      <span class="material-icons">
+        shopping_cart
+      </span>
+    </button>
+  </div>
+
+  <!-- Push elements to side of the header -->
+  <span class="spacer"></span>
+  
+  <!-- Logo -->
+  <img class="logo-img" src="/assets/img/logo.png">
+
+</mat-toolbar>
+
+

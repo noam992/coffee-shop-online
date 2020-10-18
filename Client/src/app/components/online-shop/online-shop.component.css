@@ -1,0 +1,105 @@
+/* Tool bar - filter */
+mat-toolbar-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Filter spread menu category container */
+.filter-spread-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Button spread menu category */
+.btn-category {
+    border-radius: 5px;
+}
+
+
+/* Container for whole shopping page */
+.online-page-container  {
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* Card products container */
+.card-products-container {
+    flex-flow: wrap;
+}
+
+/* Product card */
+.product-card {
+    display: inline-block;
+    max-width: 220px;
+    max-height: 450px;
+    margin: 2px;
+}
+
+/* header card */
+.mat-card-header {
+    display: block;
+}
+
+/* content card */
+.content-card {
+    height: 50px;
+    overflow: auto;
+}
+
+/* Image card  */
+.img-card {
+    height: 200px;
+    width: 200px;
+}
+
+/* Button to add new product */
+.add-icon-Btn {
+    text-align: right;
+    margin: 2px;
+    margin-right: 20px;
+}
+
+/* Active container */
+.active-container {
+    position: flex;
+    justify-content: space-between;
+}
+
+/* Mount container */
+.mount-container{
+    display: inline-block;
+    width: 70px;
+}
+
+/* Button add to cart */
+.btn-add-to-cart {
+    display: inline-block;
+}
+
+
+/* Close drawer button */
+.close-cart-and-add-product-drawer-button-container {
+    position: absolute;
+    top: 10px;
+    right:15px;
+}
+
+/* Edit product button */
+.edit-product-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+/*  */
+.form-container-edit-product{
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Close dialog edit product btn */
+.close-dialog-edit-product-btn {
+    position: absolute;
+    right: -5px;
+    top: -35px
+}
